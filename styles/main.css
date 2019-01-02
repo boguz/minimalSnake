@@ -1,0 +1,27 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*font-family: 'Roboto', sans-serif;*/
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: block;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.canvas {
+    background-color: #333;
+}
+
+.score {
+    margin-bottom: 1em;
+    color: #333;
+}
