@@ -24,15 +24,25 @@ class Snake {
         this.pos.x += this.velX * gridSize;
         this.pos.y += this.velY * gridSize;
 
-        if (this.pos.x >= canvas.width) {
-            this.pos.x = 0;
-        } else if (this.pos.x < 0) {
-            this.pos.x = canvas.width;
-        } else if (this.pos.y >= canvas.height) {
-            this.pos.y = 0;
-        } else if (this.pos.y < 0) {
-            this.pos.y = canvas.height;
+        if (goThoughWalls) {
+            if (this.pos.x >= canvas.width) {
+                this.pos.x = 0;
+            } else if (this.pos.x < 0) {
+                this.pos.x = canvas.width;
+            } else if (this.pos.y >= canvas.height) {
+                this.pos.y = 0;
+            } else if (this.pos.y < 0) {
+                this.pos.y = canvas.height;
+            }
+        } else {
+            if (this.pos.x >= canvas.width ||
+                this.pos.x < 0 ||
+                this.pos.y >= canvas.height ||
+                this.pos.y < 0) {
+                    gameover();
+                }
         }
+        
 
         this.tail.push({x: this.pos.x, y: this.pos.x});
         if (this.tail.length > 1) {
@@ -55,8 +65,16 @@ class Snake {
     }
 
     detectCollision() {
-        if(this.tail[0].x === food.posX && this.tail[0].y === food.posY) {
+        if (this.tail[0].x === food.posX && this.tail[0].y === food.posY) {
             eatFood();
+        }
+
+        if (this.tail.length > 1) {
+            for (let i = this.tail.length - 1; i > 1; i--) {
+                if (this.tail[0].x === this.tail[i].x && this.tail[0].y === this.tail[i].y) {
+                    gameover();
+                }
+            }
         }
     }
 }

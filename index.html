@@ -12,8 +12,22 @@
 <body>
 
     <div class="container">
-        <p class="score">Score: <span id="scoreAmount"></span></p>
+        <div class="scores">
+            <p class="scores__score">Score: <span id="scoreAmount"></span></p>
+            <p class="scores__score">Best: <span id="scoreMax"></span></p>
+        </div>
+        
         <canvas id="canvas" class="canvas" height="400" width="600"></canvas>
+
+        <div class="settings">
+            <div class="settings__checkbox">
+                <input type="checkbox" name="checkbox" id="wallsCheckbox" value="value" checked>
+                <label for="wallsCheckbox" id="wallsLabel">
+                    <span id="wallsCircle"></span>
+                </label>
+                Go though walls?
+            </div>
+        </div>
     </div>
 
     <script src="./scripts/snake.js"></script>

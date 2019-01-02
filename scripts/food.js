@@ -1,6 +1,20 @@
 class Food {
     constructor() {
         this.randomPosition();
+        this.colors = ['rgba(214, 69, 65, 1)',
+                       'rgba(241, 169, 160, 1)',
+                       'rgba(245, 230, 83, 1)',
+                       'rgba(245, 215, 110, 1)',
+                       'rgba(248, 148, 6, 1)',
+                       'rgba(242, 120, 75, 1)',
+                       'rgba(197, 239, 247, 1)',
+                       'rgba(34, 167, 240, 1)',
+                       'rgba(255, 148, 120, 1)',
+                       'rgba(246, 36, 89, 1)',
+                       'rgba(140, 20, 252, 1)',
+                       'rgba(150, 54, 148,1)',
+                       'rgba(255, 203, 5, 1)'];
+        this.color = this.chooseColor();
     }
 
     randomPosition() {
@@ -9,7 +23,12 @@ class Food {
     }
 
     draw() {
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.posX, this.posY, gridSize, gridSize);
+    }
+
+    chooseColor() {
+        let randomIndex = Math.floor(Math.random() * this.colors.length);
+        return this.colors[randomIndex];
     }
 }
