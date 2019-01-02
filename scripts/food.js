@@ -17,18 +17,21 @@ class Food {
         this.color = this.chooseColor();
     }
 
-    randomPosition() {
-        this.posX = Math.floor(cols * Math.random()) * gridSize;
-        this.posY = Math.floor(rows * Math.random()) * gridSize;
+    // choose random color from the colors array
+    chooseColor() {
+        let randomIndex = Math.floor(Math.random() * this.colors.length);
+        return this.colors[randomIndex];
     }
 
+    // draw the food on the canvas
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.posX, this.posY, gridSize, gridSize);
     }
 
-    chooseColor() {
-        let randomIndex = Math.floor(Math.random() * this.colors.length);
-        return this.colors[randomIndex];
+    // create random position for the food location
+    randomPosition() {
+        this.posX = Math.floor(cols * Math.random()) * gridSize;
+        this.posY = Math.floor(rows * Math.random()) * gridSize;
     }
 }

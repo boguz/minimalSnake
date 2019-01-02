@@ -6,7 +6,40 @@ class Snake {
         this.tail = [this.pos];
     }
 
+    // Detect collisions
+    detectCollision() {
+        // detect colision with food
+        if (this.tail[0].x === food.posX && this.tail[0].y === food.posY) {
+            eatFood();
+        }
+
+        // detect collision with tail
+        if (this.tail.length > 1) {
+            for (let i = this.tail.length - 1; i > 1; i--) {
+                if (this.tail[0].x === this.tail[i].x && this.tail[0].y === this.tail[i].y) {
+                    gameover();
+                }
+            }
+        }
+    }
+
+    // Draw snake on canvas
+    draw() {
+        for (let i = this.tail.length - 1; i >= 0; i--) {
+            (i > 0) ? ctx.fillStyle = "rgba(142, 244, 193, .5)" : ctx.fillStyle = "rgba(102, 204, 153, .75)";
+            ctx.fillRect(this.tail[i].x, this.tail[i].y, gridSize, gridSize);
+        }
+    }
+
+    // Update the snake parameters
     update() {
+        this.updateDirection();
+        this.updatePosition();
+        this.updateTail();
+    }
+
+    // UPdate snake's direction
+    updateDirection() {
         if (snakeDir === "right") {
             this.velX = 1;
             this.velY = 0;
@@ -20,7 +53,10 @@ class Snake {
             this.velX = 0;
             this.velY = 1;
         }
+    }
 
+    // Update Snake's position
+    updatePosition() {
         this.pos.x += this.velX * gridSize;
         this.pos.y += this.velY * gridSize;
 
@@ -42,9 +78,12 @@ class Snake {
                     gameover();
                 }
         }
-        
+    }
 
+    // Update Snake's Tail
+    updateTail() {
         this.tail.push({x: this.pos.x, y: this.pos.x});
+
         if (this.tail.length > 1) {
             for (let i = this.tail.length - 1; i >= 0; i--) {
                 if (i > 0) {
@@ -56,25 +95,5 @@ class Snake {
         
         this.tail = this.tail.slice(0, score + 2);
     }
-
-    draw() {
-        for (let i = this.tail.length - 1; i >= 0; i--) {
-            (i > 0) ? ctx.fillStyle = "rgba(142, 244, 193, .5)" : ctx.fillStyle = "rgba(102, 204, 153, .75)";
-            ctx.fillRect(this.tail[i].x, this.tail[i].y, gridSize, gridSize);
-        }
-    }
-
-    detectCollision() {
-        if (this.tail[0].x === food.posX && this.tail[0].y === food.posY) {
-            eatFood();
-        }
-
-        if (this.tail.length > 1) {
-            for (let i = this.tail.length - 1; i > 1; i--) {
-                if (this.tail[0].x === this.tail[i].x && this.tail[0].y === this.tail[i].y) {
-                    gameover();
-                }
-            }
-        }
-    }
+    
 }
