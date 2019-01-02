@@ -13,7 +13,6 @@ let snakeDir = "right";                             // right, left, up, down
 let snake = new Snake(0,0);                         // create snake at 0, 0
 let food = new Food();
 let score = 0;                                      // Player score. Number of eaten fruits
-let eaten = false;                                  // keep track of snake state. False or true
 
 
 // Initialize game
@@ -44,19 +43,18 @@ function eatFood() {
     food = new Food();
     score++;
     scoreAmount.innerText = score;
-    eaten = true;
 }
 
 // Event Listener
 // Listen to click and change direction of snake
 window.addEventListener('keydown', function(e) {
-    if (e.key === "ArrowUp") {
+    if (e.key === "ArrowUp" && snakeDir !== "down") {
         snakeDir = "up";
-    } else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown" && snakeDir !== "up") {
         snakeDir = "down";
-    } else if (e.key === "ArrowRight") {
+    } else if (e.key === "ArrowRight" && snakeDir !== "left") {
         snakeDir = "right";
-    } else if (e.key === "ArrowLeft") {
+    } else if (e.key === "ArrowLeft" && snakeDir !== "right") {
         snakeDir = "left";
     }
 });
