@@ -26,7 +26,7 @@ class Food {
     // draw the food on the canvas
     draw() {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.posX, this.posY, gridSize, gridSize);
+        ctx.fillRect(this.posX, this.posY, gridSize, gridSize );     
     }
 
     // create random position for the food location
@@ -37,7 +37,6 @@ class Food {
         // prevent food from being created "on top" of snake
         for (let i = snake.tail.length; i > 0; i--) {
             if (this.posX == snake.tail[i - 1].x && this.posY == snake.tail[i - 1].y) {
-                console.log("SAME POSITION");
                 this.randomPosition();
             }
         }   

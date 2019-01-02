@@ -12,6 +12,8 @@
 <body>
 
     <div class="container">
+
+        <h1 class="title">Minimal Snake</h1>
         <div class="scores">
             <p class="scores__score">Score: <span id="scoreAmount"></span></p>
             <p class="scores__score">Best: <span id="scoreMax"></span></p>
@@ -20,10 +22,21 @@
         <canvas id="canvas" class="canvas" height="400" width="600"></canvas>
 
         <div class="settings">
+
+            <!-- Speed Checkbox -->
             <div class="settings__checkbox">
-                <input type="checkbox" name="checkbox" id="wallsCheckbox" value="value" checked>
-                <label for="wallsCheckbox" id="wallsLabel">
-                    <span id="wallsCircle"></span>
+                <input type="checkbox" name="checkbox" id="speedCheckbox" value="value" class="settings__input">
+                <label for="speedCheckbox" id="speedLabel" class="settings__label">
+                    <span id="speedCircle" class="settings__circle"></span>
+                </label>
+                Increse Speed
+            </div>
+
+            <!-- Walls Checkbox -->
+            <div class="settings__checkbox">
+                <input type="checkbox" name="checkbox" id="wallsCheckbox" value="value" class="settings__input" checked>
+                <label for="wallsCheckbox" id="wallsLabel" class="settings__label">
+                    <span id="wallsCircle" class="settings__circle"></span>
                 </label>
                 Go though walls?
             </div>
