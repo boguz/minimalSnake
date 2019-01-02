@@ -7,7 +7,7 @@ const scoreAmount = document.getElementById('scoreAmount');     // text element 
 const scoreMax = document.getElementById('scoreMax');           // text element with score amount 
 
 // game constants
-const gridSize = 10;                        // grid size in px
+const gridSize = 50;                        // grid size in px
 const frameRate = 10;                       // frame rate in frames per second
 const cols = canvas.width / gridSize;       // number of columns
 const rows = canvas.height / gridSize;      // number of rows
@@ -85,7 +85,6 @@ function updateScores() {
 window.addEventListener('keydown', function(e) {
 
     if (snake.pos.x != previousPosition.x || snake.pos.y != previousPosition.y) {
-        console.log("YES")
         if (e.key === "ArrowUp" && snakeDir !== "down") {
             snakeDir = "up";
         } else if (e.key === "ArrowDown" && snakeDir !== "up") {

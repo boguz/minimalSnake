@@ -33,5 +33,13 @@ class Food {
     randomPosition() {
         this.posX = Math.floor(cols * Math.random()) * gridSize;
         this.posY = Math.floor(rows * Math.random()) * gridSize;
+
+        // prevent food from being created "on top" of snake
+        for (let i = snake.tail.length; i > 0; i--) {
+            if (this.posX == snake.tail[i - 1].x && this.posY == snake.tail[i - 1].y) {
+                console.log("SAME POSITION");
+                this.randomPosition();
+            }
+        }   
     }
 }
