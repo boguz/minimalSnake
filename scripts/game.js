@@ -30,7 +30,12 @@ function init() {
     loop();
     score = 0;
     scoreAmount.innerText = score;
+
+    if (localStorage.getItem('snakeHighScore')) {
+        highScore = localStorage.getItem('snakeHighScore');
+    }
     scoreMax.innerText = highScore;
+
 }
 
 // Loop Function
@@ -83,6 +88,7 @@ function resetGame() {
 function updateScores() {
     if (highScore < score) {
         highScore = score;
+        localStorage.setItem('snakeHighScore', highScore);
     }
     scoreMax.innerText = highScore;
     score = 0;
