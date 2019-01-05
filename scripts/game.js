@@ -95,7 +95,7 @@ function updateScores() {
     scoreAmount.innerText = score;
 }
 
-// EVENT LISTENERS+
+// EVENT LISTENERS
 // Listen to click and change direction of snake
 window.addEventListener('keydown', function(e) {
 
